@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import Harjoitustyo.Treenipaivakirja.domain.*;
 
+
+//CRUD methods
 @Controller
 public class TrainingController {
 	

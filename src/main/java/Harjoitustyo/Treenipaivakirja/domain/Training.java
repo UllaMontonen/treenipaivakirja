@@ -10,13 +10,14 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
 
 
-
+//database created for trainings
 @Entity
 public class Training {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
+	//day already exist, therefore used dday variable
 	@NotEmpty(message = " Day cannot be empty")
 	private String dday;
 	

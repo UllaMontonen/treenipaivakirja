@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import Harjoitustyo.Treenipaivakirja.domain.Training;
 import Harjoitustyo.Treenipaivakirja.domain.TrainingRepository;
 
+//Rest CRUD methods
 @RestController
 public class RestTrainingController {
 	

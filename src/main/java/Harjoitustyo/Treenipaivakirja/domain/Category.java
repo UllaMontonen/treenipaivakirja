@@ -11,6 +11,7 @@ import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+//database created for running categories
 @Entity
 public class Category {
 	@Id
@@ -18,7 +19,7 @@ public class Category {
 	private Long categoryid;
 	private String name;
 	
-	@JsonIgnore// jää muuten ikuiseen looppiin
+	@JsonIgnore //otherwise will cause an endless loop
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "category")
 	private List<Training> trainings;
 
