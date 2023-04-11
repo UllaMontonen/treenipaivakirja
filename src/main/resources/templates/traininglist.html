@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" /> 
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Training list</title>
+</head>
+<body>
+	<div class="col-md-8">
+		<h1>List of saved Trainings</h1>
+	
+		<h3 th:inline="text">Welcome [[${#httpServletRequest.remoteUser}]]</h3>
+	
+		<table class="table table-striped">
+			<tr>
+				<th>Day</th>
+				<th>Time</th>
+				<th>Distance</th>
+				<th>Category</th>
+				<th>Comment</th>
+				<th sec:authorize="hasAuthority('ADMIN')">Delete</th>
+				<th sec:authorize="hasAuthority('ADMIN')">Edit</th>
+			</tr>
+			<tr th:each = "training : ${trainings}">
+				<td th:text="${training.dday}"></td>
+	    		<td th:text="${training.time}+ min"></td>
+	    		<td th:text="${training.km}+ km"></td>
+	    		<td th:text="${training.category.name}"></td>
+	    		<td th:text="${training.comment}"></td>
+	    		<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-danger" th:href="@{/delete/{id}(id=${training.id})}">Delete</a></td>
+	    		<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-success" th:href="@{/edit/{id}(id=${training.id})}">Edit</a></td>  
+			</tr>
+		</table>
+		<p sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-success" href="/add">Add training</a>
+		<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Sign Out" class="btn btn-danger"/>
+		</form>
+	</div>
+</body>
+</html>

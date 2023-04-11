@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+<head>
+    <title>Add new training</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div  class="col-md-8">
+		<h1>Add training</h1>
+		<form th:object="${training}" th:action="@{save}" action="#" method="post">
+		  	
+		  	<label for="dday">Day</label>
+			<input type="text" id="dday" th:field="*{dday}" />
+			<div th:if="${#fields.hasErrors('dday')}" th:errors="*{dday}">Error</div>
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	
+		  	<label for="time">Time (min)</label>
+			<input type="number" id="time" min="10" max="500" th:field="*{time}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+		  	
+		  	<label for="km">Distance (km)</label>
+			<input type="number" id="km" min="1" max="500" th:field="*{km}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="catlist">Category</label>
+			<select id="catlist" th:field="*{category}" class="form-control">
+       			<option th:each="category: ${categories}" th:value="${category.categoryid}" th:text="${category.name}"></option>
+    		</select>
+    		<div style="clear: both; display: block; height: 10px;"></div>
+			
+			<label for="comment">Comment</label>
+			<input type="text" id="comment" th:field="*{comment}" />
+			<div style="clear: both; display: block; height: 20px;"></div>
+			
+			<input type="submit" class="btn btn-success" value="Save"></input>
+		</form>
+	</div>
+</body>
+</html>
