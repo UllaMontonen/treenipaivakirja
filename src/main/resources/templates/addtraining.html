@@ -12,7 +12,7 @@
 		  	
 		  	<label for="dday">Day</label>
 			<input type="text" id="dday" th:field="*{dday}" />
-			<div th:if="${#fields.hasErrors('dday')}" th:errors="*{dday}">Error</div>
+			<div th:if="${#fields.hasErrors('dday')}" th:errors="*{dday}" style="color: red">Error</div>
 			<div style="clear: both; display: block; height: 10px;"></div>
 		  	
 		  	<label for="time">Time (min)</label>
